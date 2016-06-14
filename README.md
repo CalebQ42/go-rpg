@@ -1,5 +1,5 @@
 # go-rpg
-Some RPG variables writen in Go (Mainly for the Fantasy Age system)
+Some RPG variables writen in Go (Mainly for the Fantasy Age system) to help keep things organized while GMing
 
 # Contents  
 Die (A single die)  
@@ -18,3 +18,4 @@ rpgxui/PlayListAdapter (array of InitPlayer that is automatically ordered from h
 All documentation :)  
 Add simple initiative example program (and some more)  
 Add ability to load and save to file easily  
+Make more universeal  
