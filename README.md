@@ -13,3 +13,8 @@ Stats (Basic framework for base stats)
 Player  
 InitPlayer (Player and initiative number struct)  
 rpgxui/PlayListAdapter (array of InitPlayer that is automatically ordered from highest to lowest. For use with github.com/nelsam/gxui.List)
+
+#TODO
+All documentation :)  
+Add simple initiative example program (and some more)  
+Add ability to load and save to file easily  
