@@ -1,5 +1,5 @@
 # go-rpg
-Some RPG variables writen in Go (Mainly for the Fantasy Age system) to help keep things organized while GMing
+Some RPG variables written in Go (Mainly for the Fantasy Age system) to help keep things organized while GMing
 
 # Contents  
 Die (A single die)  
@@ -14,8 +14,11 @@ Player
 InitPlayer (Player and initiative number struct)  
 rpgxui/PlayListAdapter (array of InitPlayer that is automatically ordered from highest to lowest. For use with github.com/nelsam/gxui.List)
 
-#TODO
+# TODO
 All documentation :)  
 Add simple initiative example program (and some more)  
 Add ability to load and save to file easily  
-Make more universeal  
+Make more universal  
+
+# UI
+As of right now, I currently use gxui for UI
