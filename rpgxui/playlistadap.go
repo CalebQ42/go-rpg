@@ -1,9 +1,12 @@
 package rpgxui
 
 import (
-	"rpg"
+	"encoding/gob"
+	"fmt"
+	"os"
 	"sort"
 
+	"github.com/CalebQ42/go-rpg"
 	"github.com/nelsam/gxui"
 	"github.com/nelsam/gxui/math"
 )
@@ -23,7 +26,8 @@ func CreatePlayerListAdapter(plays rpg.InitPlays) (out PlayerListAdapter) {
 
 //AddPlayer TODO
 func (p *PlayerListAdapter) AddPlayer(play rpg.Player, initiative int) {
-	p.AddInitPlayer(rpg.CreateInitPlay(&play, initiative))
+	p.AddInitPlayer(rpg.CreateInitPlay(play, initiative))
+	p.order()
 }
 
 //AddInitPlayer TODO
@@ -40,7 +44,7 @@ func (p *PlayerListAdapter) SetInitiative(index, init int) {
 
 //GetInitiative TODO
 func (p *PlayerListAdapter) GetInitiative(index int) int {
-	return p.plays[index].Initiative()
+	return p.plays[index].Initiative
 }
 
 //MoveUp TODO
@@ -67,25 +71,55 @@ func (p *PlayerListAdapter) Remove(index int) {
 	p.DataChanged(false)
 }
 
+//Load TODO
+func (p *PlayerListAdapter) Load(filename string) {
+	fi, err := os.Open(filename)
+	if err != nil {
+		return
+	}
+	de := gob.NewDecoder(fi)
+	err = de.Decode(&p.plays)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fi.Close()
+	p.order()
+}
+
+//Save TODO
+func (p *PlayerListAdapter) Save(filename string) {
+	os.Remove(filename)
+	fi, err := os.Create(filename)
+	if err != nil {
+		panic(err)
+	}
+	e := gob.NewEncoder(fi)
+	err = e.Encode(p.plays)
+	if err != nil {
+		panic(err)
+	}
+	fi.Close()
+}
+
 func (p *PlayerListAdapter) order() {
-	sort.Sort(p.plays)
+	sort.Sort((*p).plays)
 	p.DataChanged(false)
 }
 
 //Count TODO
 func (p *PlayerListAdapter) Count() int {
-	return p.plays.Len()
+	return len(p.plays)
 }
 
 //ItemAt TODO
 func (p *PlayerListAdapter) ItemAt(index int) gxui.AdapterItem {
-	return p.plays[index]
+	return p.plays[index].Player().Name
 }
 
 //ItemIndex TODO
 func (p *PlayerListAdapter) ItemIndex(item gxui.AdapterItem) int {
 	for i, v := range p.plays {
-		if v == item {
+		if v.Player().Name == item {
 			return i
 		}
 	}
@@ -95,7 +129,7 @@ func (p *PlayerListAdapter) ItemIndex(item gxui.AdapterItem) int {
 //Create TODO
 func (p *PlayerListAdapter) Create(th gxui.Theme, index int) gxui.Control {
 	lbl := th.CreateLabel()
-	lbl.SetText(p.plays[index].Player().Name())
+	lbl.SetText(p.plays[index].Player().Name)
 	return lbl
 }
 

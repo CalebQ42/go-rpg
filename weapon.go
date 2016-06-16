@@ -2,58 +2,43 @@ package rpg
 
 //Weapon TODO
 type Weapon struct {
-	name    string
-	atk     func() int
-	ranged  bool
-	sRange  int
-	lRange  int
-	loaded  bool
-	maxAmmo int
-	ammo    int
+	Name    string
+	Atk     func() int
+	Ranged  bool
+	SRange  int
+	LRange  int
+	Loaded  bool
+	MaxAmmo int
+	Ammo    int
 }
 
 //CreateWeapon TODO
 func CreateWeapon(name string, attack func() int) (out Weapon) {
-	out.name = name
-	out.atk = attack
-	out.ranged = false
-	out.loaded = true
+	out.Name = name
+	out.Atk = attack
+	out.Ranged = false
+	out.Loaded = true
 	return
 }
 
 //SetRange TODO
 func (w *Weapon) SetRange(short, long int) {
-	w.ranged = true
-	w.sRange = short
-	w.lRange = long
+	w.Ranged = true
+	w.SRange = short
+	w.LRange = long
 }
 
 //SetMaxAmmo TODO
 func (w *Weapon) SetMaxAmmo(max int) {
-	w.maxAmmo = max
-}
-
-//MaxAmmo TODO
-func (w Weapon) MaxAmmo() int {
-	return w.maxAmmo
+	w.MaxAmmo = max
 }
 
 //SetAmmo TODO
 func (w *Weapon) SetAmmo(ammo int) {
-	w.ammo = ammo
-}
-
-//Ammo TODO
-func (w Weapon) Ammo() int {
-	return w.ammo
-}
-
-//Loaded TODO
-func (w Weapon) Loaded() bool {
-	return w.loaded
+	w.Ammo = ammo
 }
 
 //Attack TODO
 func (w Weapon) Attack() int {
-	return w.atk()
+	return w.Atk()
 }

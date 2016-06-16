@@ -2,78 +2,53 @@ package rpg
 
 //Player TODO
 type Player struct {
-	name          string
-	stats         Stats
-	armor         Armor
-	shield        Shield
-	weapons       []Weapon
-	items         []Item
-	equipedWeapon *Weapon
+	Name          string
+	Stats         Stats
+	Armor         Armor
+	Shield        Shield
+	Weapons       []Weapon
+	Items         []Item
+	EquipedWeapon *Weapon
 }
 
 //CreatePlayer TODO
 func CreatePlayer(name string, stats Stats) (out Player) {
-	out.name = name
-	out.stats = stats
+	out.Name = name
+	out.Stats = stats
 	return
-}
-
-//Name TODO
-func (p Player) Name() string {
-	return p.name
-}
-
-//Stats TODO
-func (p *Player) Stats() *Stats {
-	return &p.stats
 }
 
 //SetArmor TODO
 func (p *Player) SetArmor(armor Armor) {
-	p.armor = armor
-}
-
-//Armor TODO
-func (p *Player) Armor() *Armor {
-	return &p.armor
+	p.Armor = armor
 }
 
 //SetShield TODO
 func (p *Player) SetShield(shield Shield) {
-	p.shield = shield
-}
-
-//Shield TODO
-func (p Player) Shield() *Shield {
-	return &p.shield
+	p.Shield = shield
 }
 
 //AddWeapon TODO
 func (p *Player) AddWeapon(weapon Weapon) {
-	p.weapons = append(p.weapons, weapon)
-}
-
-//Weapons TODO
-func (p *Player) Weapons() *[]Weapon {
-	return &p.weapons
+	p.Weapons = append(p.Weapons, weapon)
 }
 
 //SetEquippedWeapon TODO
 func (p *Player) SetEquippedWeapon(index int) {
-	p.equipedWeapon = &p.weapons[index]
+	p.EquipedWeapon = &p.Weapons[index]
 }
 
 //AddItem TODO
 func (p *Player) AddItem(item Item) {
-	p.items = append(p.items, item)
+	p.Items = append(p.Items, item)
 }
 
 //Item TODO
 func (p Player) Item(index int) Item {
-	return p.items[index]
+	return p.Items[index]
 }
 
 //Inventory TODO
 func (p *Player) Inventory() *[]Item {
-	return &p.items
+	return &p.Items
 }

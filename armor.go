@@ -2,37 +2,17 @@ package rpg
 
 //Armor TODO
 type Armor struct {
-	name    string
-	rating  int
-	penalty int
-	strain  int
+	Name    string
+	Rating  int
+	Penalty int
+	Strain  int
 }
 
 //CreateArmor TODO
 func CreateArmor(name string, rating, penalty, strain int) (out Armor) {
-	out.name = name
-	out.rating = rating
-	out.penalty = penalty
-	out.strain = strain
+	out.Name = name
+	out.Rating = rating
+	out.Penalty = penalty
+	out.Strain = strain
 	return
-}
-
-//Name TODO
-func (a *Armor) Name() string {
-	return a.name
-}
-
-//Rating TODO
-func (a *Armor) Rating() int {
-	return a.rating
-}
-
-//Penalty TODO
-func (a *Armor) Penalty() int {
-	return a.penalty
-}
-
-//Strain TODO
-func (a *Armor) Strain() int {
-	return a.strain
 }

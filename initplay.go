@@ -2,30 +2,25 @@ package rpg
 
 //InitPlay TODO
 type InitPlay struct {
-	play       *Player
-	initiative int
+	Play       Player
+	Initiative int
 }
 
 //CreateInitPlay TODO
-func CreateInitPlay(player *Player, initiative int) (out InitPlay) {
-	out.play = player
-	out.initiative = initiative
+func CreateInitPlay(player Player, initiative int) (out InitPlay) {
+	out.Play = player
+	out.Initiative = initiative
 	return
 }
 
 //Player TODO
 func (i *InitPlay) Player() *Player {
-	return i.play
-}
-
-//Initiative TODO
-func (i InitPlay) Initiative() int {
-	return i.initiative
+	return &i.Play
 }
 
 //SetInitiative TODO
 func (i *InitPlay) SetInitiative(init int) {
-	i.initiative = init
+	i.Initiative = init
 }
 
 //InitPlays TODO
@@ -36,7 +31,7 @@ func (ip InitPlays) Len() int {
 }
 
 func (ip InitPlays) Less(i, j int) bool {
-	return ip[i].initiative > ip[j].initiative
+	return ip[i].Initiative > ip[j].Initiative
 }
 
 func (ip InitPlays) Swap(i, j int) {
