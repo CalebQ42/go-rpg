@@ -52,6 +52,7 @@ func (p *PlayerListAdapter) MoveUp(index int) {
 	if index == 0 {
 		return
 	}
+	p.plays[index].Initiative = p.plays[index-1].Initiative
 	p.plays.Swap(index, index-1)
 	p.order()
 }
@@ -61,6 +62,7 @@ func (p *PlayerListAdapter) MoveDown(index int) {
 	if index == p.plays.Len()-1 {
 		return
 	}
+	p.plays[index].Initiative = p.plays[index+1].Initiative
 	p.plays.Swap(index, index+1)
 	p.order()
 }
