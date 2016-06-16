@@ -28,16 +28,6 @@ func (w *Weapon) SetRange(short, long int) {
 	w.LRange = long
 }
 
-//SetMaxAmmo TODO
-func (w *Weapon) SetMaxAmmo(max int) {
-	w.MaxAmmo = max
-}
-
-//SetAmmo TODO
-func (w *Weapon) SetAmmo(ammo int) {
-	w.Ammo = ammo
-}
-
 //Attack TODO
 func (w Weapon) Attack() int {
 	return w.Atk()

@@ -2,17 +2,13 @@ package rpg
 
 //Item TODO
 type Item struct {
-	Name, Desc string
+	Name        string
+	Description string
 }
 
 //CreateItem TODO
 func CreateItem(name, description string) (out Item) {
 	out.Name = name
-	out.Desc = description
+	out.Description = description
 	return
-}
-
-//Description TODO
-func (i Item) Description() string {
-	return i.Desc
 }

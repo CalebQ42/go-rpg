@@ -7,7 +7,7 @@ type Player struct {
 	Armor         Armor
 	Shield        Shield
 	Weapons       []Weapon
-	Items         []Item
+	Inventory     []Item
 	EquipedWeapon *Weapon
 }
 
@@ -16,16 +16,6 @@ func CreatePlayer(name string, stats Stats) (out Player) {
 	out.Name = name
 	out.Stats = stats
 	return
-}
-
-//SetArmor TODO
-func (p *Player) SetArmor(armor Armor) {
-	p.Armor = armor
-}
-
-//SetShield TODO
-func (p *Player) SetShield(shield Shield) {
-	p.Shield = shield
 }
 
 //AddWeapon TODO
@@ -40,15 +30,5 @@ func (p *Player) SetEquippedWeapon(index int) {
 
 //AddItem TODO
 func (p *Player) AddItem(item Item) {
-	p.Items = append(p.Items, item)
-}
-
-//Item TODO
-func (p Player) Item(index int) Item {
-	return p.Items[index]
-}
-
-//Inventory TODO
-func (p *Player) Inventory() *[]Item {
-	return &p.Items
+	p.Inventory = append(p.Inventory, item)
 }

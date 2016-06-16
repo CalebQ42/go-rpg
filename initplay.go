@@ -2,25 +2,15 @@ package rpg
 
 //InitPlay TODO
 type InitPlay struct {
-	Play       Player
+	Player     Player
 	Initiative int
 }
 
 //CreateInitPlay TODO
 func CreateInitPlay(player Player, initiative int) (out InitPlay) {
-	out.Play = player
+	out.Player = player
 	out.Initiative = initiative
 	return
-}
-
-//Player TODO
-func (i *InitPlay) Player() *Player {
-	return &i.Play
-}
-
-//SetInitiative TODO
-func (i *InitPlay) SetInitiative(init int) {
-	i.Initiative = init
 }
 
 //InitPlays TODO
