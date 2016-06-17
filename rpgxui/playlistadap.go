@@ -24,6 +24,11 @@ func CreatePlayerListAdapter(plays rpg.InitPlays) (out PlayerListAdapter) {
 	return
 }
 
+//InitPlay TODO
+func (p *PlayerListAdapter) InitPlay(index int) *rpg.InitPlay {
+	return &p.plays[index]
+}
+
 //AddPlayer TODO
 func (p *PlayerListAdapter) AddPlayer(play rpg.Player, initiative int) {
 	p.AddInitPlayer(rpg.CreateInitPlay(play, initiative))
@@ -38,7 +43,7 @@ func (p *PlayerListAdapter) AddInitPlayer(play rpg.InitPlay) {
 
 //SetInitiative TODO
 func (p *PlayerListAdapter) SetInitiative(index, init int) {
-	p.plays[index].SetInitiative(init)
+	p.plays[index].Initiative = init
 	p.order()
 }
 
@@ -115,13 +120,13 @@ func (p *PlayerListAdapter) Count() int {
 
 //ItemAt TODO
 func (p *PlayerListAdapter) ItemAt(index int) gxui.AdapterItem {
-	return p.plays[index].Player().Name
+	return p.plays[index].Player.Name
 }
 
 //ItemIndex TODO
 func (p *PlayerListAdapter) ItemIndex(item gxui.AdapterItem) int {
 	for i, v := range p.plays {
-		if v.Player().Name == item {
+		if v.Player.Name == item {
 			return i
 		}
 	}
@@ -131,7 +136,7 @@ func (p *PlayerListAdapter) ItemIndex(item gxui.AdapterItem) int {
 //Create TODO
 func (p *PlayerListAdapter) Create(th gxui.Theme, index int) gxui.Control {
 	lbl := th.CreateLabel()
-	lbl.SetText(p.plays[index].Player().Name)
+	lbl.SetText(p.plays[index].Player.Name)
 	return lbl
 }
 
