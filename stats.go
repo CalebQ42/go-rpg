@@ -7,6 +7,7 @@ type Stats struct {
 
 //CreateStats TODO
 func CreateStats(stats []string, defaultValue int) (out Stats) {
+	out.Stats = make(map[string]int)
 	for _, v := range stats {
 		out.Stats[v] = defaultValue
 	}
