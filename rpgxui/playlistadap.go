@@ -110,7 +110,7 @@ func (p *PlayerListAdapter) Save(filename string) {
 
 func (p *PlayerListAdapter) order() {
 	sort.Sort((*p).plays)
-	p.DataChanged(false)
+	p.DataChanged(true)
 }
 
 //Count TODO

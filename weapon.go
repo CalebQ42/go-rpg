@@ -1,9 +1,14 @@
 package rpg
 
+import (
+	"strconv"
+	"strings"
+)
+
 //Weapon TODO
 type Weapon struct {
 	Name    string
-	Atk     func() int
+	Damage  string
 	Ranged  bool
 	SRange  int
 	LRange  int
@@ -13,9 +18,9 @@ type Weapon struct {
 }
 
 //CreateWeapon TODO
-func CreateWeapon(name string, attack func() int) (out Weapon) {
+func CreateWeapon(name string, damage string) (out Weapon) {
 	out.Name = name
-	out.Atk = attack
+	out.Damage = damage
 	out.Ranged = false
 	out.Loaded = true
 	return
@@ -28,7 +33,23 @@ func (w *Weapon) SetRange(short, long int) {
 	w.LRange = long
 }
 
-//Attack TODO
-func (w Weapon) Attack() int {
-	return w.Atk()
+//RollDamage TODO
+func (w *Weapon) RollDamage() (out int) {
+	lwr := strings.ToLower(w.Damage)
+	ind := strings.IndexAny(lwr, "+-")
+	indd := strings.Index(lwr, "d")
+	if ind != -1 {
+		ad, _ := strconv.Atoi(lwr[ind:])
+		out += ad
+		dieNum, _ := strconv.Atoi(lwr[:indd])
+		dieSides, _ := strconv.Atoi(lwr[indd+1 : ind])
+		di := CreateDice(dieNum, dieSides)
+		out += di.RollTotal()
+	} else {
+		dieNum, _ := strconv.Atoi(lwr[:indd])
+		dieSides, _ := strconv.Atoi(lwr[indd+1:])
+		di := CreateDice(dieNum, dieSides)
+		out += di.RollTotal()
+	}
+	return
 }
