@@ -11,49 +11,49 @@ import (
 	"github.com/nelsam/gxui/math"
 )
 
-//PlayerListAdapter TODO
-type PlayerListAdapter struct {
+//InitiativeListAdapter TODO
+type InitiativeListAdapter struct {
 	gxui.AdapterBase
 	plays rpg.InitPlays
 }
 
 //CreatePlayerListAdapter TODO
-func CreatePlayerListAdapter(plays rpg.InitPlays) (out PlayerListAdapter) {
+func CreatePlayerListAdapter(plays rpg.InitPlays) (out InitiativeListAdapter) {
 	out.plays = plays
 	out.order()
 	return
 }
 
 //InitPlay TODO
-func (p *PlayerListAdapter) InitPlay(index int) *rpg.InitPlay {
+func (p *InitiativeListAdapter) InitPlay(index int) *rpg.InitPlay {
 	return &p.plays[index]
 }
 
 //AddPlayer TODO
-func (p *PlayerListAdapter) AddPlayer(play rpg.Player, initiative int) {
+func (p *InitiativeListAdapter) AddPlayer(play rpg.Player, initiative int) {
 	p.AddInitPlayer(rpg.CreateInitPlay(play, initiative))
 	p.order()
 }
 
 //AddInitPlayer TODO
-func (p *PlayerListAdapter) AddInitPlayer(play rpg.InitPlay) {
+func (p *InitiativeListAdapter) AddInitPlayer(play rpg.InitPlay) {
 	p.plays = append(p.plays, play)
 	p.order()
 }
 
 //SetInitiative TODO
-func (p *PlayerListAdapter) SetInitiative(index, init int) {
+func (p *InitiativeListAdapter) SetInitiative(index, init int) {
 	p.plays[index].Initiative = init
 	p.order()
 }
 
 //GetInitiative TODO
-func (p *PlayerListAdapter) GetInitiative(index int) int {
+func (p *InitiativeListAdapter) GetInitiative(index int) int {
 	return p.plays[index].Initiative
 }
 
 //MoveUp TODO
-func (p *PlayerListAdapter) MoveUp(index int) {
+func (p *InitiativeListAdapter) MoveUp(index int) {
 	if index == 0 {
 		return
 	}
@@ -63,7 +63,7 @@ func (p *PlayerListAdapter) MoveUp(index int) {
 }
 
 //MoveDown TODO
-func (p *PlayerListAdapter) MoveDown(index int) {
+func (p *InitiativeListAdapter) MoveDown(index int) {
 	if index == p.plays.Len()-1 {
 		return
 	}
@@ -73,13 +73,13 @@ func (p *PlayerListAdapter) MoveDown(index int) {
 }
 
 //Remove TODO
-func (p *PlayerListAdapter) Remove(index int) {
+func (p *InitiativeListAdapter) Remove(index int) {
 	p.plays = append(p.plays[:index], p.plays[index+1:]...)
 	p.DataChanged(false)
 }
 
 //Load TODO
-func (p *PlayerListAdapter) Load(filename string) {
+func (p *InitiativeListAdapter) Load(filename string) {
 	fi, err := os.Open(filename)
 	if err != nil {
 		return
@@ -94,7 +94,7 @@ func (p *PlayerListAdapter) Load(filename string) {
 }
 
 //Save TODO
-func (p *PlayerListAdapter) Save(filename string) {
+func (p *InitiativeListAdapter) Save(filename string) {
 	os.Remove(filename)
 	fi, err := os.Create(filename)
 	if err != nil {
@@ -108,23 +108,23 @@ func (p *PlayerListAdapter) Save(filename string) {
 	fi.Close()
 }
 
-func (p *PlayerListAdapter) order() {
+func (p *InitiativeListAdapter) order() {
 	sort.Sort((*p).plays)
 	p.DataChanged(true)
 }
 
 //Count TODO
-func (p *PlayerListAdapter) Count() int {
+func (p *InitiativeListAdapter) Count() int {
 	return len(p.plays)
 }
 
 //ItemAt TODO
-func (p *PlayerListAdapter) ItemAt(index int) gxui.AdapterItem {
+func (p *InitiativeListAdapter) ItemAt(index int) gxui.AdapterItem {
 	return p.plays[index].Player.Name
 }
 
 //ItemIndex TODO
-func (p *PlayerListAdapter) ItemIndex(item gxui.AdapterItem) int {
+func (p *InitiativeListAdapter) ItemIndex(item gxui.AdapterItem) int {
 	for i, v := range p.plays {
 		if v.Player.Name == item {
 			return i
@@ -134,13 +134,13 @@ func (p *PlayerListAdapter) ItemIndex(item gxui.AdapterItem) int {
 }
 
 //Create TODO
-func (p *PlayerListAdapter) Create(th gxui.Theme, index int) gxui.Control {
+func (p *InitiativeListAdapter) Create(th gxui.Theme, index int) gxui.Control {
 	lbl := th.CreateLabel()
 	lbl.SetText(p.plays[index].Player.Name)
 	return lbl
 }
 
 //Size TODO
-func (p *PlayerListAdapter) Size(gxui.Theme) math.Size {
+func (p *InitiativeListAdapter) Size(gxui.Theme) math.Size {
 	return math.Size{W: math.MaxSize.W, H: 20}
 }
