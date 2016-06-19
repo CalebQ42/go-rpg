@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-//Weapon TODO
+//Weapon is a universal weapon
 type Weapon struct {
 	Name    string
 	Damage  string
@@ -17,7 +17,8 @@ type Weapon struct {
 	Ammo    int
 }
 
-//CreateWeapon TODO
+//CreateWeapon creates a weapon with the specified name and damage. Damage is in
+//The form of 2d6+3. The + or - has to come after the die
 func CreateWeapon(name string, damage string) (out Weapon) {
 	out.Name = name
 	out.Damage = damage
@@ -26,14 +27,14 @@ func CreateWeapon(name string, damage string) (out Weapon) {
 	return
 }
 
-//SetRange TODO
+//SetRange Sets the range of the weapon. Also sets the weapon as ranged.
 func (w *Weapon) SetRange(short, long int) {
 	w.Ranged = true
 	w.SRange = short
 	w.LRange = long
 }
 
-//RollDamage TODO
+//RollDamage returns the damage dealt by the weapon.
 func (w *Weapon) RollDamage() (out int) {
 	lwr := strings.ToLower(w.Damage)
 	ind := strings.IndexAny(lwr, "+-")

@@ -1,12 +1,12 @@
 package rpg
 
-//Item TODO
+//Item is a basic item in an inventory
 type Item struct {
 	Name        string
 	Description string
 }
 
-//CreateItem TODO
+//CreateItem creates an item
 func CreateItem(name, description string) (out Item) {
 	out.Name = name
 	out.Description = description

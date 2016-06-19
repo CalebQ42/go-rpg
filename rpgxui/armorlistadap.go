@@ -9,30 +9,31 @@ import (
 	"github.com/nelsam/gxui/math"
 )
 
-//ArmorListAdapter TODO
+//ArmorListAdapter is a list adapter for an armor array
 type ArmorListAdapter struct {
 	gxui.AdapterBase
 	arms []rpg.Armor
 }
 
-//AddArmor TODO
+//AddArmor adds an armor onto the array
 func (a *ArmorListAdapter) AddArmor(arm rpg.Armor) {
 	a.arms = append(a.arms, arm)
 	a.DataChanged(false)
 }
 
-//Armor TODO
+//Armor returns a pointer to the armor at the index
 func (a *ArmorListAdapter) Armor(index int) *rpg.Armor {
 	return &a.arms[index]
 }
 
-//Remove TODO
+//Remove removes armor from the array
 func (a *ArmorListAdapter) Remove(index int) {
 	a.arms = append(a.arms[:index], a.arms[index+1:]...)
 	a.DataChanged(false)
 }
 
-//Save TODO
+//Save saves the array to the filename using gob. First deletes the file (if it exists)
+//Then saves to the file
 func (a *ArmorListAdapter) Save(filename string) {
 	os.Remove(filename)
 	fi, err := os.Create(filename)
@@ -47,7 +48,8 @@ func (a *ArmorListAdapter) Save(filename string) {
 	fi.Close()
 }
 
-//Load TODO
+//Load loads the array from the specified filename using gob. If there is an error
+//while opening the file then it simply returns
 func (a *ArmorListAdapter) Load(filename string) {
 	fi, err := os.Open(filename)
 	if err != nil {
@@ -62,17 +64,17 @@ func (a *ArmorListAdapter) Load(filename string) {
 	a.DataChanged(false)
 }
 
-//Count TODO
+//Count returns the length of the armor array
 func (a *ArmorListAdapter) Count() int {
 	return len(a.arms)
 }
 
-//ItemAt TODO
+//ItemAt returns the name of the armor a the specified index
 func (a *ArmorListAdapter) ItemAt(index int) gxui.AdapterItem {
 	return a.arms[index].Name
 }
 
-//ItemIndex TODO
+//ItemIndex returns the index of the armor with the specified name
 func (a *ArmorListAdapter) ItemIndex(item gxui.AdapterItem) int {
 	nm, ok := item.(string)
 	if ok {
@@ -85,14 +87,14 @@ func (a *ArmorListAdapter) ItemIndex(item gxui.AdapterItem) int {
 	return -1
 }
 
-//Create TODO
+//Create creates a label with the armor at the index's name
 func (a *ArmorListAdapter) Create(th gxui.Theme, index int) gxui.Control {
 	lbl := th.CreateLabel()
 	lbl.SetText(a.arms[index].Name)
 	return lbl
 }
 
-//Size TODO
+//Size figure it out
 func (a *ArmorListAdapter) Size(gxui.Theme) math.Size {
 	return math.Size{W: math.MaxSize.W, H: 20}
 }

@@ -1,19 +1,19 @@
 package rpg
 
-//InitPlay TODO
+//InitPlay is a player and initiative pair
 type InitPlay struct {
 	Player     Player
 	Initiative int
 }
 
-//CreateInitPlay TODO
+//CreateInitPlay creates an InitPlay instance
 func CreateInitPlay(player Player, initiative int) (out InitPlay) {
 	out.Player = player
 	out.Initiative = initiative
 	return
 }
 
-//InitPlays TODO
+//InitPlays is a collection of InitPlay
 type InitPlays []InitPlay
 
 func (ip InitPlays) Len() int {

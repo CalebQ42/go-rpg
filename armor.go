@@ -1,6 +1,6 @@
 package rpg
 
-//Armor TODO
+//Armor is a simple instance of a piece of armor
 type Armor struct {
 	Name    string
 	Rating  int
@@ -8,7 +8,7 @@ type Armor struct {
 	Strain  int
 }
 
-//CreateArmor TODO
+//CreateArmor creates armor
 func CreateArmor(name string, rating, penalty, strain int) (out Armor) {
 	out.Name = name
 	out.Rating = rating
