@@ -18,6 +18,7 @@ type WeaponListAdapter struct {
 //AddWeapon TODO
 func (w *WeaponListAdapter) AddWeapon(wep rpg.Weapon) {
 	w.weaps = append(w.weaps, wep)
+	w.DataChanged(false)
 }
 
 //Weapon TODO
@@ -28,6 +29,7 @@ func (w *WeaponListAdapter) Weapon(index int) *rpg.Weapon {
 //Remove TODO
 func (w *WeaponListAdapter) Remove(index int) {
 	w.weaps = append(w.weaps[:index], w.weaps[index+1:]...)
+	w.DataChanged(false)
 }
 
 //Save TODO
@@ -57,6 +59,7 @@ func (w *WeaponListAdapter) Load(filename string) {
 		panic(err)
 	}
 	fi.Close()
+	w.DataChanged(false)
 }
 
 //Count TODO

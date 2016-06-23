@@ -18,6 +18,7 @@ type PlayerListAdapter struct {
 //AddPlayer TODO
 func (p *PlayerListAdapter) AddPlayer(pl rpg.Player) {
 	p.plays = append(p.plays, pl)
+	p.DataChanged(false)
 }
 
 //Player TODO
@@ -28,6 +29,7 @@ func (p *PlayerListAdapter) Player(index int) *rpg.Player {
 //Remove TODO
 func (p *PlayerListAdapter) Remove(index int) {
 	p.plays = append(p.plays[:index], p.plays[index+1:]...)
+	p.DataChanged(false)
 }
 
 //Save TODO
@@ -57,6 +59,7 @@ func (p *PlayerListAdapter) Load(filename string) {
 		panic(err)
 	}
 	fi.Close()
+	p.DataChanged(false)
 }
 
 //Count TODO
