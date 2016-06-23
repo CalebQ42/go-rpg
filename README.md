@@ -27,4 +27,4 @@ Add age system focuses (or some other type of more universal implementation)
 Make more universal  
 
 # UI
-As of right now, I currently use gxui for UI, though I may change to github.com/andlabs/ui
+As of right now, I currently use gxui for UI, though I may change to github.com/andlabs/ui if/when listboxes are added
