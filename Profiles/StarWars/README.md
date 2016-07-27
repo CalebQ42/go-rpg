@@ -1,4 +1,4 @@
-# swrpg
+# swrpg [![GoDoc](https://godoc.org/github.com/CalebQ42/go-rpg/Profiles/StarWars?status.svg)](https://godoc.org/github.com/CalebQ42/go-rpg/Profiles/StarWars)
 An extension of go-rpg specifically for the Star Wars RPG.
 
 #Species
