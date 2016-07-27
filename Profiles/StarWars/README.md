@@ -23,3 +23,29 @@ When creating a character you can just put in a string of the species instead of
   Nautolan
   Togruta
   Zabrak
+  Besalisk
+  Dug
+  Mustafarian
+  Caamasi - Remember to give one rank in either Charm or Discipline
+  Neimoidian - Remember to give one rank in either Deception or Negotiation
+  Gossam
+  Chadra-Fan
+  Dressellian
+  Xexto
+  Aqualish - Remember to pick a sub-species option and the corresponding benefits
+  Klatooinian - Remember to give one rank in either Brawl, Ranged (Heavy), or Ranged (Light)
+  Weequay - Remember to give one rank in either Resilience or Athletics
+  Chiss
+  Toydarian
+  Arcona
+  Chevin
+  Falleen
+  Gotal
+  Quarren
+  Hutt - Remember to give one rank in either Coercion or Discipline
+  Gank - Remember to give one rank in either Coercion or Vigilance
+  Nikto - Remember to pick a sub-species option and the corresponding benefits
+  Sakiyan - Remember to give one rant in either Perception or Vigilance
+  Corellian Human - Same as Human but remember the special piloting rules.
+  Drall
+  Selonian
