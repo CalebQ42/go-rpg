@@ -420,7 +420,7 @@ func CreateSWCharacter(name, species string) (out Character) {
 	return
 }
 
-//StartingStats figures out the starting wound threshold, strain threshold, and soak value for the character's species. Run after editing the base 6 stats.
+//StartingStats figures out the starting wound threshold, strain threshold, and soak value for the character's species. Run after editing the base 6 stats at character creation.
 func (c *Character) StartingStats() {
 	c.SoakVal = c.Stats["Brawn"]
 	switch c.Species {
